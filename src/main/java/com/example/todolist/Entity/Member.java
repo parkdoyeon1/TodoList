@@ -3,21 +3,19 @@ package com.example.todolist.Entity;
 import lombok.*;
 import org.springframework.validation.annotation.Validated;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
+import javax.persistence.*;
 
 @Builder
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
+@Table(name = "member")
 @Entity
 public class Member {
 
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
 
     private String account_id;
     private String password;
