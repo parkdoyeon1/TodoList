@@ -1,38 +1,23 @@
 package com.example.todolist.Entity;
 
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Entity
+@Setter
 @Table(name = "member")
 public class ToDoList {
-
-    private Member member;
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String contents;
 
-    public void setMember(Member member) {
-        this.member = member;
-    }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public void setContents(String contents) {
-        this.contents = contents;
-    }
 }
