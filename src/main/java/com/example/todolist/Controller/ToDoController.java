@@ -25,7 +25,7 @@ public class ToDoController {
         return toDoService.updateToDo(dto,id);
     }
 
-    @DeleteMapping("{/todo -id}")
+    @DeleteMapping("/{todo-id}")
     public MessageResponse deleteToDo(@PathVariable("todo-id") Long id){
 
         return toDoService.deleteToDo(id);
