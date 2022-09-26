@@ -17,9 +17,9 @@ public class ToDoService {
 
 
     @Transactional
-    public MessageResponse createToDo(CreateToDoRequest dto) {
+    public MessageResponse createToDo(CreateToDoRequest request) {
             toDoListRepository.save(ToDoList.builder()
-                    .contents(request.getContent)
+                    .contents(request.getContent())
                     .build());
         return MessageResponse.builder()
                 .message("ToDoList 생성이 완료되었습니다.")
