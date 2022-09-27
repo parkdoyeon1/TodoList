@@ -1,9 +1,9 @@
 package com.example.todolist.Controller;
 
 import com.example.todolist.Entity.ToDoList;
-import com.example.todolist.dto.CreateToDoRequest;
-import com.example.todolist.dto.MessageResponse;
-import com.example.todolist.dto.UpdateToDoRequest;
+import com.example.todolist.dto.request.CreateToDoRequest;
+import com.example.todolist.dto.response.MessageResponse;
+import com.example.todolist.dto.request.UpdateToDoRequest;
 import com.example.todolist.service.ToDoService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

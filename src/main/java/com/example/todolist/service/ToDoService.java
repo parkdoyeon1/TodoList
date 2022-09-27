@@ -1,9 +1,9 @@
 package com.example.todolist.service;
 
 import com.example.todolist.Entity.ToDoList;
-import com.example.todolist.dto.CreateToDoRequest;
-import com.example.todolist.dto.MessageResponse;
-import com.example.todolist.dto.UpdateToDoRequest;
+import com.example.todolist.dto.request.CreateToDoRequest;
+import com.example.todolist.dto.response.MessageResponse;
+import com.example.todolist.dto.request.UpdateToDoRequest;
 import com.example.todolist.repository.ToDoListRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -11,7 +11,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.NoSuchElementException;
-import java.util.TimeZone;
 
 @Service
 @RequiredArgsConstructor   // private final ToDoListRepository toDoListRepository 의 생성자를 추가해줄려고
