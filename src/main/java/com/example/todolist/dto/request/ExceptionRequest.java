@@ -1,4 +1,4 @@
-package com.example.todolist.dto;
+package com.example.todolist.dto.request;
 
 import com.example.todolist.Entity.ToDoList;
 import com.example.todolist.repository.ToDoListRepository;

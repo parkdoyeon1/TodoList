@@ -1,4 +1,4 @@
-package com.example.todolist.dto;
+package com.example.todolist.dto.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,6 +9,9 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class CreateToDoRequest {
+public class UpdateToDoRequest {
+
     private String content;
+
+
 }
