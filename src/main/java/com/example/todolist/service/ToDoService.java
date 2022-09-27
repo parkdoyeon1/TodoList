@@ -11,12 +11,15 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.TimeZone;
 
 @Service
-@RequiredArgsConstructor //왜 붙이는지 궁금합
+@RequiredArgsConstructor   // private final ToDoListRepository toDoListRepository 의 생성자를 추가해줄려고
 public class ToDoService {
 
     private final ToDoListRepository toDoListRepository;
+
+    private ToDoList toDoList = new ToDoList();
 
     public List<ToDoList> getToDo(){
         return toDoListRepository.findAll();
@@ -57,4 +60,20 @@ public class ToDoService {
         return toDoListRepository.findById(id)
                 .orElseThrow(() -> new NoSuchElementException(id + "번 아이디는 없는 아이디 입니다"));
     }
+
+    private void noneIdChecker(Long id){
+
+        toDoListRepository.findById(toDoList.getId())
+                .ifPresent(toDoList1 -> {
+                    throw new IllegalStateException("예외처리");
+                });
+
+    }
+
+
+
+
+
+
+
 }
