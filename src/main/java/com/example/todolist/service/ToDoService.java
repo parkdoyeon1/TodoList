@@ -70,9 +70,10 @@ public class ToDoService {
     }
 
 
-
-
-
-
-
+    public MessageResponse deleteAll() {
+        toDoListRepository.deleteAll();
+        return MessageResponse.builder()
+                .message("모든 아이디가 삭제되었습니다.")
+                .build();
+    }
 }

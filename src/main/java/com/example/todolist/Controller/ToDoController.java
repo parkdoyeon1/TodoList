@@ -34,6 +34,11 @@ public class ToDoController {
         return toDoService.deleteToDo(id);
     }
 
+    @DeleteMapping("/all")
+    public MessageResponse deleteAll(){
+       return toDoService.deleteAll();
+    }
+
     @GetMapping
     public List<ToDoList> readAllToDo(){
         return toDoService.getToDo();
