@@ -5,6 +5,8 @@ import com.example.todolist.dto.request.CreateToDoRequest;
 import com.example.todolist.dto.response.MessageResponse;
 import com.example.todolist.dto.request.UpdateToDoRequest;
 import com.example.todolist.repository.ToDoListRepository;
+
+
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -36,10 +38,11 @@ public class ToDoService {
     }
 
 
+
     @Transactional
     public MessageResponse updateToDo(UpdateToDoRequest dto, Long id) {
         ToDoList toDoList =toDoListRepository.findById(id)
-                        .orElseThrow(() -> new NoSuchElementException(id + "번은 없는 아이디 입니다"));
+                .orElseThrow(() -> new NoSuchElementException(id + "번은 없는 아이디 입니다"));
         toDoList.setContents(dto.getContent());
         return MessageResponse.builder()
                 .message(id + "번 아이디 ToDo 수정되었습니다")
@@ -48,7 +51,12 @@ public class ToDoService {
 
     @Transactional
     public MessageResponse deleteToDo(Long id) {
-        toDoListRepository.deleteById(id);
+        try {
+            toDoListRepository.deleteById(id);
+        }catch (Exception e){
+            throw new BaseException(ErrorCode.NOT_FOUND);
+        }
+
         return MessageResponse.builder()
                 .message(id + "번이 아이디 ToDO가 삭제되었습니다")
                 .build();
@@ -57,7 +65,8 @@ public class ToDoService {
     public ToDoList getToDo(Long id){
 
         return toDoListRepository.findById(id)
-                .orElseThrow(() -> new NoSuchElementException(id + "번 아이디는 없는 아이디 입니다"));
+                .orElse(()-> new BaseException(ErrorCode.NOT_FOUND));
+              //  .orElseThrow(() -> new NoSuchElementException(id + "번 아이디는 없는 아이디 입니다"));
     }
 
     private void noneIdChecker(Long id){
@@ -73,7 +82,7 @@ public class ToDoService {
     public MessageResponse deleteAll() {
         toDoListRepository.deleteAll();
         return MessageResponse.builder()
-                .message("모든 아이디가 삭제되었습니다.")
+                .message("모든 ToDOList가 삭제되었습니다.")
                 .build();
     }
 
