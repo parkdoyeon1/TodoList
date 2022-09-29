@@ -31,7 +31,7 @@ public class ToDoService {
                     .contents(request.getContent())
                     .build());
         return MessageResponse.builder()
-                .message("ToDoList 생성이 완료되었습니다.")
+                .message("ToDoList" +"(" + request.getContent() + ")" + "ToDoList 생성이 완료되었습니다.")
                 .build();
     }
 
@@ -76,4 +76,5 @@ public class ToDoService {
                 .message("모든 아이디가 삭제되었습니다.")
                 .build();
     }
+
 }
