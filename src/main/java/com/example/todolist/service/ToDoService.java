@@ -71,14 +71,7 @@ public class ToDoService {
               //  .orElseThrow(() -> new NoSuchElementException(id + "번 아이디는 없는 아이디 입니다"));
     }
 
-    private void noneIdChecker(Long id){
 
-        toDoListRepository.findById(toDoList.getId())
-                .ifPresent(toDoList1 -> {
-                    throw new IllegalStateException("예외처리");
-                });
-
-    }
 
 
     public MessageResponse deleteAll() {
