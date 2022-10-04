@@ -6,6 +6,8 @@ import lombok.Getter;
 public enum ErrorCode {
     NOT_FOUND(404,"Not Found Id : 없는 아이디 입니다."),
     BAD_REQUEST(400,"Bad Request : 잘못된 입력입니다."),
+    HTTP_MEDIA_TYPE_NOT_SUPPORTED_EXCEPTION(415, "BAD_REQUEST : 잘못된 입력 타입입니다."),
+    HTTP_MESSAGE_NOT_READABLE_EXCEPTION(400, "BAD_REQUEST : value = NULL"),
     METHOD_ARGUMENT_TYPE_MISMATCH_EXCEPTION(400,"잘못된 엔드포인트 입니다.");
     private final Integer status;
     private final String message;
