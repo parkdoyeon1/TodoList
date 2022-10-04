@@ -1,5 +1,6 @@
 package com.example.todolist.Controller;
 
+import com.example.todolist.exception.BaseException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,14 +12,10 @@ import java.util.NoSuchElementException;
 @ControllerAdvice
 public class ExceptionController {
 
-    @ExceptionHandler(value = NoSuchElementException.class)
-    public ResponseEntity exception(NoSuchElementException error){
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(error.getMessage());
+    @ExceptionHandler(value = BaseException.class)
+    public ResponseEntity exception(BaseException error){
+        return ResponseEntity.status(error.getErrorCode().getStatus())
+                .body(error.getErrorCode().getMessage());
     }
-    @ExceptionHandler(value = EmptyResultDataAccessException.class)
-    public ResponseEntity exception(EmptyResultDataAccessException error){
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(error.getMessage());
-    }
-
 
 }

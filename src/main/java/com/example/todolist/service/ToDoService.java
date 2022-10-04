@@ -4,6 +4,8 @@ import com.example.todolist.Entity.ToDoList;
 import com.example.todolist.dto.request.CreateToDoRequest;
 import com.example.todolist.dto.response.MessageResponse;
 import com.example.todolist.dto.request.UpdateToDoRequest;
+import com.example.todolist.exception.BaseException;
+import com.example.todolist.exception.ErrorCode;
 import com.example.todolist.repository.ToDoListRepository;
 
 
@@ -65,7 +67,7 @@ public class ToDoService {
     public ToDoList getToDo(Long id){
 
         return toDoListRepository.findById(id)
-                .orElse(()-> new BaseException(ErrorCode.NOT_FOUND));
+                .orElseThrow(()-> new BaseException(ErrorCode.NOT_FOUND));
               //  .orElseThrow(() -> new NoSuchElementException(id + "번 아이디는 없는 아이디 입니다"));
     }
 
