@@ -32,10 +32,10 @@ public class ToDoService {
     @Transactional
     public MessageResponse createToDo(CreateToDoRequest request) {
             toDoListRepository.save(ToDoList.builder()
-                    .contents(request.getContent())
+                    .contents(request.getContents())
                     .build());
         return MessageResponse.builder()
-                .message("ToDoList" +"(" + request.getContent() + ")" + "ToDoList 생성이 완료되었습니다.")
+                .message("ToDoList" +"(" + request.getContents() + ")" + "ToDoList 생성이 완료되었습니다.")
                 .build();
     }
 
